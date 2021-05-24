@@ -1,7 +1,7 @@
 node-red-contrib-servicenow-table-api
 ========================
 
-A [Node-RED][1] nodes to use Service Now Table API [Table API doc](https://developer.servicenow.com/dev.do#!/reference/api/quebec/rest/c_TableAPI).
+A [Node-RED](https://www.nodered.org/) nodes to use Service Now Table API [Table API doc](https://developer.servicenow.com/dev.do#!/reference/api/quebec/rest/c_TableAPI).
 
 Install
 -------
