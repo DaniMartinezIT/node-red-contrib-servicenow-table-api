@@ -1,7 +1,7 @@
 node-red-contrib-servicenow-table-api
 ========================
 
-A [Node-RED](https://www.nodered.org/) nodes to use Service Now Table API [Table API doc](https://developer.servicenow.com/dev.do#!/reference/api/quebec/rest/c_TableAPI).
+A [Node-RED](https://www.nodered.org/) nodes to use Service Now Table API. [Table API doc](https://developer.servicenow.com/dev.do#!/reference/api/quebec/rest/c_TableAPI).
 
 Install
 -------
@@ -32,7 +32,7 @@ Config Nodes
 Message parameters
 ------------------
 
-* Retrieve Records Properties
+### Retrieve Records Properties
 
 | __**Property**__                       | __**Use**__                               |
 |----------------------------------------|-------------------------------------------|
@@ -48,7 +48,7 @@ Message parameters
 | msg.sysparm_query_no_domain            | Optional Query Parameters (default false) |
 | msg.sysparm_no_count                   | Optional Query Parameters (default false) |
 
-* Retrieve Record Properties
+### Retrieve Record Properties
 
 | __**Property**__                       | __**Use**__                               |
 |----------------------------------------|-------------------------------------------|
@@ -60,7 +60,7 @@ Message parameters
 | msg.sysparm_view                       | Optional Query Parameters (default '')    |
 | msg.sysparm_query_no_domain            | Optional Query Parameters (default false) |
 
-* Modify Record Properties
+### Modify Record Properties
 
 | __**Property**__                       | __**Use**__                               |
 |----------------------------------------|-------------------------------------------|
@@ -74,7 +74,7 @@ Message parameters
 | msg.sysparm_suppress_auto_sys_field    | Optional Query Parameters (default false) |
 | msg.sysparm_query_no_domain            | Optional Query Parameters (default false) |
 
-* Update Record
+### Update Record
 
 | __**Property**__                       | __**Use**__                               |
 |----------------------------------------|-------------------------------------------|
@@ -88,7 +88,7 @@ Message parameters
 | msg.sysparm_suppress_auto_sys_field    | Optional Query Parameters (default false) |
 | msg.sysparm_query_no_domain            | Optional Query Parameters (default false) |
 
-* Create Record
+### Create Record
 
 | __**Property**__                       | __**Use**__                               |
 |----------------------------------------|-------------------------------------------|
@@ -101,7 +101,7 @@ Message parameters
 | msg.sysparm_suppress_auto_sys_field    | Optional Query Parameters (default false) |
 | msg.sysparm_view                       | Optional Query Parameters (default '')    |
 
-* Delete Record
+### Delete Record
 
 
 | __**Property**__                       | __**Use**__                               |
