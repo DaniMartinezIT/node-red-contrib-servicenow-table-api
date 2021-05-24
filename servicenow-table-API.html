@@ -1,0 +1,279 @@
+<!--
+//
+//     Copyright (C) 2021    Daniel Martínez
+//
+//     This program is free software: you can redistribute it and/or modify
+//     it under the terms of the GNU General Public License as published by
+//     the Free Software Foundation, either version 3 of the License, or
+//     (at your option) any later version.
+//
+//     This program is distributed in the hope that it will be useful,
+//     but WITHOUT ANY WARRANTY; without even the implied warranty of
+//     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//     GNU General Public License for more details.
+//
+//     You should have received a copy of the GNU General Public License
+//     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!-- ****************************** Configuration Node ****************************** -->
+<script type="text/javascript">
+    RED.nodes.registerType('servicenow-config',{
+        category: 'config',
+        defaults: {
+            name: {value:"Instance name",required:true},
+            instance: {value:"https://xxxxx.service-now.com",required:true},
+            username: {type: "text"},
+            password: {type: "password"}
+        },
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="servicenow-config">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-config-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-instance"><i class="icon-white-globe"></i>Instance</label>
+    <input type="text" id="node-config-input-instance" placeholder="https://****.service-now.com/">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-username"><i class="icon-tag"></i> Username</label>
+    <input type="text" id="node-config-input-username" placeholder="">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-password"><i class="icon-tag"></i> Password</label>
+    <input type="password" id="node-config-input-password" placeholder="">
+  </div>
+</script>
+
+
+
+
+<!-- ****************************** Create Record Node ****************************** -->
+
+<script type="text/javascript">
+  RED.nodes.registerType('create record', {
+    category: 'Service Now Table API',
+    color: '#8fc1ba',
+    defaults: {
+      name: {
+        value: ""
+      },
+      server: {
+        value: "",
+        type: "servicenow-config"
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "nodered-contrib-servicenow-icon.png",
+    label: function() {
+      return this.name || "create record";
+    }
+  });
+</script>
+  <script type="text/x-red" data-template-name="create record">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label> 
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-server"><i class="icon-db"></i> Server</label>
+    <input type="text" id="node-input-server" placeholder="server">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="create">
+
+    <ul>
+      <li><code>msg.topic</code> TableName (mandatory)</li>
+      <li><code>msg.payload</code> must contain the request Body (mandatory)</li>
+      <li><code>msg.sysparm_display_value</code> Return field display values (true), actual values (false), or both (all) (default: false) (optional)</li>
+       <li><code>msg.sysparm_display_value</code> True to exclude Table API links for reference fields (default: false) (optional)</li>
+       <li><code>msg.sysparm_exclude_reference_link</code> Return field display values (true), actual values (false), or both (all) (default: false) (optional)</li>
+       <li><code>msg.sysparm_fields</code> A comma-separated list of fields to return in the response (optional)</li>
+       <li><code>msg.sysparm_input_display_value</code> Set field values using their display value (true) or actual value (false) (default: false) (optional)</li>>
+       <li><code>msg.sysparm_suppress_auto_sys_field</code> True to suppress auto generation of system fields (default: false) (optional)</li>
+       <li><code>msg.sysparm_view</code> Render the response according to the specified UI view (overridden by sysparm_fields) (optional)</li>
+    </ul>
+  </p>
+</script>
+
+
+<!-- ****************************** Retrieve a Record Node ****************************** -->
+
+<script type="text/javascript">
+  RED.nodes.registerType('retrieve record', {
+    category: 'Service Now Table API',
+    color: '#8fc1ba',
+    defaults: {
+      name: {
+        value: ""
+      },
+      server: {
+        value: "",
+        type: "servicenow-config"
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "nodered-contrib-servicenow-icon.png",
+    label: function() {
+      return this.name || "retrieve record";
+    }
+  });
+</script>
+  <script type="text/x-red" data-template-name="retrieve record">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label> 
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-server"><i class="icon-db"></i> Server</label>
+    <input type="text" id="node-input-server" placeholder="server">
+  </div>
+</script>
+
+<!-- ****************************** Retrieve Records Node ****************************** -->
+
+<script type="text/javascript">
+  RED.nodes.registerType('retrieve records', {
+    category: 'Service Now Table API',
+    color: '#8fc1ba',
+    defaults: {
+      name: {
+        value: ""
+      },
+      server: {
+        value: "",
+        type: "servicenow-config"
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "nodered-contrib-servicenow-icon.png",
+    label: function() {
+      return this.name || "retrieve records";
+    }
+  });
+</script>
+  <script type="text/x-red" data-template-name="retrieve records">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-server"><i class="icon-db"></i> Server</label>
+    <input type="text" id="node-input-server" placeholder="server">
+  </div>
+</script>
+
+
+<!-- ****************************** Modify Record Node ****************************** -->
+
+<script type="text/javascript">
+  RED.nodes.registerType('modify record', {
+    category: 'Service Now Table API',
+    color: '#8fc1ba',
+    defaults: {
+      name: {
+        value: ""
+      },
+      server: {
+        value: "",
+        type: "servicenow-config"
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "nodered-contrib-servicenow-icon.png",
+    label: function() {
+      return this.name || "modify record";
+    }
+  });
+</script>
+  <script type="text/x-red" data-template-name="modify record">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-server"><i class="icon-db"></i> Server</label>
+    <input type="text" id="node-input-server" placeholder="server">
+  </div>
+</script>
+
+<!-- ****************************** Patch Record Node ****************************** -->
+
+<script type="text/javascript">
+  RED.nodes.registerType('patch record', {
+    category: 'Service Now Table API',
+    color: '#8fc1ba',
+    defaults: {
+      name: {
+        value: ""
+      },
+      server: {
+        value: "",
+        type: "servicenow-config"
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "nodered-contrib-servicenow-icon.png",
+    label: function() {
+      return this.name || "patch record";
+    }
+  });
+</script>
+  <script type="text/x-red" data-template-name="patch record">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-server"><i class="icon-db"></i> Server</label>
+    <input type="text" id="node-input-server" placeholder="server">
+  </div>
+</script>
+
+<!-- ****************************** Delete Record Node ****************************** -->
+
+<script type="text/javascript">
+  RED.nodes.registerType('delete record', {
+    category: 'Service Now Table API',
+    color: '#8fc1ba',
+    defaults: {
+      name: {
+        value: ""
+      },
+      server: {
+        value: "",
+        type: "servicenow-config"
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "nodered-contrib-servicenow-icon.png",
+    label: function() {
+      return this.name || "delete record";
+    }
+  });
+</script>
+  <script type="text/x-red" data-template-name="delete record">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-server"><i class="icon-db"></i> Server</label>
+    <input type="text" id="node-input-server" placeholder="server">
+  </div>
+</script>
+
+

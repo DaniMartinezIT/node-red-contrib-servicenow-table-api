@@ -1,0 +1,16 @@
+{
+    "name": "servicenow-table-API",
+    "version": "1.0.0",
+    "description": "",
+    "main": "servicenow-table-API.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Daniel Martínez",
+    "license": "ISC",
+    "node-red": {
+        "nodes": {
+            "remote-server": "servicenow-table-API.js"
+        }
+    }
+}
